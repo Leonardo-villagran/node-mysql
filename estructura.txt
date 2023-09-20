@@ -1,0 +1,15 @@
+node-mysql
++---src
+|   +---app.js
++---.env
++---.gitignore
++---package.json
++---package-lock.json	
++---README.md
++---docker-compose.yml
++---Dockerfile
++---.dockerignore
++---mysql-db-data
++---node_modules
+
+

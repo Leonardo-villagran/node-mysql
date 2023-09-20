@@ -21,6 +21,10 @@ services:
       - mysqldb
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    volumes:
+      - ./src:/usr/src/app/src # Evita que se sobreescriban los archivos
+      - /usr/src/app/node_modules  # Evita que se sobreescriban los módulos instalados
+    command: bash -c "nodemon -L --watch . ./src/app.js"
     networks:
       - app-network
 

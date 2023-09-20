@@ -19,7 +19,7 @@ app.use(cors());
 
 // Ruta para responder a la solicitud GET en '/'
 app.get('/',(req,res)=>{
-    res.send("Bienvenido a la API de NodeJS con MySQL");
+    res.send("Bienvenido a la API de NodeJS con MySQL y Docker");
 });
 
 // Ruta para responder a la solicitud GET en '/ping'

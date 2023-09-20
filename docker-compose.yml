@@ -4,6 +4,8 @@ services:
     image: mysql
     env_file: ./.env
     environment:
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
       MYSQL_DATABASE: $MYSQL_DATABASE
     ports:
@@ -21,6 +23,18 @@ services:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     networks:
       - app-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysqldb
+    ports:
+      - 8081:80  
+    depends_on:
+      - mysqldb
+    networks:
+      - app-network
+
 
 networks:
   app-network:

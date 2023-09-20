@@ -1,6 +1,7 @@
 import express from 'express';
 import {createPool} from 'mysql2/promise';
 import {config} from 'dotenv';
+import cors from 'cors';
 config();
 
 const app=express();
@@ -8,14 +9,15 @@ const app=express();
 // Crea un pool de conexiones
 const pool = createPool({
     host: process.env.MYSQL_HOST,
-    user: 'root',
-    password: process.env.MYSQL_ROOT_PASSWORD,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
     port: process.env.MYSQL_DOCKER_PORT
 });
 
+// Habilita CORS para permitir solicitudes desde cualquier origen (esto puede ser ajustado según tus necesidades)
+app.use(cors());
 
-// createConnection returns a Promise
-
+// Ruta para responder a la solicitud GET en '/'
 app.get('/',(req,res)=>{
     res.send("Bienvenido a la API de NodeJS con MySQL");
 });

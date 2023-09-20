@@ -8,7 +8,7 @@ const app=express();
 // Crea un pool de conexiones
 const pool = createPool({
     host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
+    user: 'root',
     password: process.env.MYSQL_ROOT_PASSWORD,
     port: process.env.MYSQL_DOCKER_PORT
 });
@@ -33,7 +33,7 @@ app.get('/ping', async (req, res) => {
 });
 
 // Inicia el servidor en el puerto 3000
-const PORT = process.env.NODE_DOCKER_PORT || 3000;
+const PORT = process.env.NODE_DOCKER_PORT;
 app.listen(PORT, () => {
     console.log(`Servidor Express en ejecución en el puerto ${PORT}`);
 });
